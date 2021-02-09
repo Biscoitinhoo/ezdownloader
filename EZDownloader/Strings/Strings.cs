@@ -11,7 +11,7 @@
     // "--set-url" strings
     public static readonly string PATH = "path";
     // General strings
-    public static readonly string WELCOME_MESSAGE = "EZDownloader!";
+    public static readonly string WELCOME_MESSAGE = "EZDownloader! [version 0.0.1]";
     public static readonly string WELCOME_MESSAGE_HELP = "Type --help for more informations!";
     public static readonly string DONE = "DONE!";
     public static readonly string ARROW = ">> ";
