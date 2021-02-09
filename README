@@ -1,0 +1,15 @@
+EZDownloader - Source Code
+==========================
+
+Download videos/audios from Youtube and images from internet (not so cool) following easy steps!
+If you don't know how to use it, execute '--help' to see all the available commands.
+
+The objective is download files from Youtube in a simple way, without needing to access websites to do it. All by cmd.
+
+Current functionalities
+  - Save a default path for automate the download proccess. (--set-path)
+  - Download Youtube video/audio in the specified location (default or not).
+  - Download images from internet in the specified location (default or not) - (Don't use it, I just did it for fun. Downloading directly is faster...).
+
+
+Still with some problems, so... still in work.
