@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\RandomName\GenerateRandomName.cs" />
     <Compile Include="Strings\Strings.cs" />
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Controller\SetPath\DefaultFolder.cs" />

@@ -10,19 +10,15 @@ public class UserCommands
             Commands.Help();
             return;
         }
-        if (command.Trim().Equals(Strings.DOWNLOAD))
-        {
-            Commands.DownloadFile();
-            return;
-        }
         if (command.Trim().Equals(Strings.SETPATH))
         {
             Commands.SetURLPath();
             return;
         }
+        // download command...
         if (command.Trim().StartsWith("http") || command.Trim().StartsWith("https"))
         {
-            Commands.SelectFileFormat();
+            Commands.SelectFileFormat(command);
             return;
         }
         // else...

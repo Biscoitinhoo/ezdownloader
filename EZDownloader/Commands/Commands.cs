@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 public class Commands
 {
@@ -6,53 +7,77 @@ public class Commands
     {
         Prints.HelpManual();
     }
-    public static void DownloadFile()
-    {
-        Console.WriteLine(Prints.Blank());
 
-        Console.Write(Strings.URL + " " + Prints.Arrow());
-        string url = Console.ReadLine();
-
-        Console.Write(Strings.FOLDER + " " + Prints.Arrow());
-        string folder = Console.ReadLine();
-
-        Console.Write(Strings.NAME + " " + Prints.Arrow());
-        string name = Console.ReadLine();
-
-        Downloader.Download(url, folder, name);
-        // TODO: verify extension and download videos?
-    }
     public static void SetURLPath()
     {
+    userChoice:
+
         Console.WriteLine(Prints.Blank());
 
         Console.Write(Strings.PATH + " " + Prints.Arrow());
         string path = Console.ReadLine();
 
-        while (!Validator.IsValidDefaultPathRequest(path))
+        if (!Validator.IsValidDefaultPathRequest(path))
         {
-            // TODO: error messages class;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(Prints.InvalidDefaultPath());
-            Console.ResetColor();
+            Prints.InvalidDefaultPath();
 
-            Console.Write(Strings.PATH + " " + Prints.Arrow());
-            path = Console.ReadLine();
+            goto userChoice;
         }
 
-        DefaultFolder.defaultFolder = path;
+        DefaultFolder.CreateFile(path);
 
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine(Prints.Done());
-        Console.ResetColor();
+        Prints.Done();
     }
-    public static void SelectFileFormat()
+
+    public static void SelectFileFormat(string url)
     {
-        // TODO: refactor to Strings class
-        Console.WriteLine("Select extension options:");
-        Console.WriteLine("1 - .mp4");
-        Console.WriteLine("2 - .mp3");
-        Console.WriteLine("3 - .png");
-        Console.WriteLine("4 - .jpeg");
+    userChoice:
+
+        Prints.DownloadMenu();
+        string userInput = Console.ReadLine();
+
+        string folder = null;
+
+        if (IsValidDownloadOption(userInput))
+        {
+            if (userInput == Strings.DOWNLOAD_VIDEO_AUDIO) DownloadMP4MP3File(url, folder);
+            if (userInput == Strings.DOWNLOAD_IMAGE) DownloadImageFile(url, folder);
+        }
+        else
+        {
+            Console.WriteLine("Invalid download option.");
+            goto userChoice;
+        }
+
+    }
+
+    private static bool IsValidDownloadOption(string command)
+    {
+        bool IsValidDownloadOption = false;
+        ArrayList options = new ArrayList
+        {
+            "1",
+            "2",
+        };
+        foreach (string option in options)
+        {
+            if (command.Equals(option)) IsValidDownloadOption = true;
+        }
+        return IsValidDownloadOption;
+    }
+    // Download files...
+    private static void DownloadMP4MP3File(string url, string folder)
+    {
+        Console.Write("folder " + Prints.Arrow());
+        folder = Console.ReadLine();
+
+        Downloader.DownloadMP4MP3(url, folder);
+    }
+    private static void DownloadImageFile(string url, string folder)
+    {
+        Console.Write("folder " + Prints.Arrow());
+        folder = Console.ReadLine();
+
+        Downloader.DownloadImage(url, folder);
     }
 }

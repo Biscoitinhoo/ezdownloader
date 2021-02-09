@@ -3,11 +3,11 @@
     // Default path validations;
     public static bool IsValidDefaultFolder()
     {
-        return DefaultFolder.defaultFolder != null;
+        return DefaultFolder.GetDefaultPath().Length > 0;
     }
     public static bool DefaultFolderWasSelected(string folder)
     {
-        return folder.Equals(".");
+        return folder.Trim().Equals(".");
     }
     public static bool IsValidDefaultPathRequest(string path)
     {

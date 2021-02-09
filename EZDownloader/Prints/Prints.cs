@@ -25,17 +25,16 @@ public class Prints
 
     public static void HelpManual()
     {
-        string manualTitle = "             Here is your 'help' manual!";
-        string download = "   --download      -------    for start download.";
-        string url = "       url         -------    the url you want to download.";
-        string type = "       type        -------    file type (png, mp3, etc...).";
-        string folder = "      folder       -------    the folder path.";
-        string name = "       name        -------    the name of the file (Ex.: filename.png).";
-        string hint = "       hint        -------    use '.' for use default properties.";
+        string manualTitle = "                      Here is your 'help' manual!";
+        string download = "   {https://youtube/url}      -------    for start download.";
+        string url = "      1 - Video/Audio         -------    select for download video and audio.";
+        string type = "      2 - Image               -------    select for download an image.";
+        string folder = "      folder                  -------    the folder path.";
 
-        string setPath = "   --set-path      -------    for start a new default folder path location.";
-        string path = "       path        -------    the name of the default path.";
+        string setPath = "     --set-path               -------    for start a new default folder path location.";
+        string path = "        path                  -------    the name of the default path.";
 
+        string hint = "        hint                  -------    use '.' for use default properties.";
         Console.ForegroundColor = ConsoleColor.DarkMagenta;
         Console.WriteLine(manualTitle);
         Console.ResetColor();
@@ -49,7 +48,6 @@ public class Prints
         Console.WriteLine(url);
         Console.WriteLine(type);
         Console.WriteLine(folder);
-        Console.WriteLine(name);
 
         Console.ResetColor();
 
@@ -68,14 +66,30 @@ public class Prints
         Console.ResetColor();
     }
 
-    public static string Done()
+    public static void Done()
     {
-        return Strings.DONE;
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(Strings.DONE);
+        Console.ResetColor();
     }
 
-    public static string InvalidDefaultPath()
+    public static void InvalidDefaultPath()
     {
-        return Strings.INVALID_DEFAULT_PATH;
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(Strings.INVALID_DEFAULT_PATH);
+        Console.ResetColor();
+    }
+
+    public static void DownloadMenu()
+    {
+
+        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+        Console.WriteLine("Select what you want to download:");
+        Console.ResetColor();
+        Console.WriteLine("1 - Video/Audio");
+        Console.WriteLine("2 - Image");
+        Console.Write(Prints.Arrow());
+
     }
 
 }

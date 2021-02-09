@@ -14,8 +14,11 @@
     public static readonly string WELCOME_MESSAGE = "EZDownloader!";
     public static readonly string WELCOME_MESSAGE_HELP = "Type --help for more informations!";
     public static readonly string DONE = "DONE!";
-    public static readonly string ARROW = "> ";
+    public static readonly string ARROW = ">> ";
     // Errors
     public static readonly string INVALID_DEFAULT_PATH = "Invalid path.";
+    //Download options
+    public static readonly string DOWNLOAD_VIDEO_AUDIO = "1";
+    public static readonly string DOWNLOAD_IMAGE = "2";
 }
 
